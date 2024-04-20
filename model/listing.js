@@ -10,9 +10,12 @@ const listingschema= new Schema({
        type:String,
        required:true
     },
-    image:{
-        type:String,
-        set:(v) => v===""?"https://images.unsplash.com/photo-1707343843344-011332037abb?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D":v,
+    image: {
+        type: String, // Ensure that 'image' field is defined as string type
+        default: "https://images.unsplash.com/photo-1712952815172-9ab1b6bba7b5?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        set: function (v) {
+            return v ? v.url : this.default; // Set image to default if v is falsy, otherwise use v.url
+        }
     },
     price:{
         type:Number,
