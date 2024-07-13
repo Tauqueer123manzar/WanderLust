@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderLust</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    form {
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(16, 14, 14, 0.1);
+        width: 350px;
+    }
+    input, textarea, button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+<body>
+    <form method="POST" action="/listings">
+        <h1>Enter new Listings</h1>
+        <input name="listing[title]" type="text" placeholder="Enter title" required />
+        <textarea name="listing[description]" placeholder="Enter Description here..." rows="5" required></textarea>
+        <input name="listing[image]" type="text" placeholder="Insert image URL Link" />
+        <input name="listing[price]" type="number" placeholder="Enter Price" required />
+        <input name="listing[country]" type="text" placeholder="Enter Country" required />
+        <input name="listing[location]" type="text" placeholder="Enter Location" required />
+        <button type="submit">ADD</button>
+    </form>
+</body>
+
+</html>
