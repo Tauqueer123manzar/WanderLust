@@ -4,6 +4,7 @@ const app=express();
 const mongoose=require("mongoose");
 const port=8080;
 const path=require("path");
+// const methodOverride= require("method-override");
 const Listing = require("./models/listiningmodel");
 // ----------------------------------- mongodb connection ---------------------------------------------
 main()
@@ -23,19 +24,6 @@ app.set("views",path.join(__dirname,"views"));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-
-// app.get("/testListing",async(req,res)=>{
-//     let simpledata= new listing({
-//         title:"MERN Project",
-//         description:"Easy to learn",
-//         price:560,
-//         location:"Hyderabad",
-//         country:"India"
-//     });
-//     await simpledata.save();
-//     console.log("data saved on the database");
-//     res.send("send data sucessfully");
-// });
 // -------------------------------------------- API call ----------------------------------------------
 
 // Index Route
@@ -57,11 +45,19 @@ app.get("/listings/:id",async(req,res)=>{
     res.render("listings/show",{listing});
 })
 
+// create route
 app.post("/listings",async(req,res)=>{
    const newListing= new Listing(req.body.listing);
    await newListing.save();
    res.redirect("/listings");
 });
+
+// Edit route
+app.get("/listings/:id/edit",async(req,res)=>{
+    let {id}= req.params;
+    const listing= await Listing.findById(id);
+    res.render("listings/edit.ejs",{listing});
+})
 
 app.listen(port,()=>{
     console.log(`server is listing on port at ${port}`);

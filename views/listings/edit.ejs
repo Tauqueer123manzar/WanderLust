@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +16,7 @@
         margin: 0;
     }
     form {
-        background-color: #fff;
+        background-color: #3cc7b4;
         padding: 25px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(16, 14, 14, 0.1);
@@ -41,16 +40,15 @@
     }
 </style>
 <body>
-    <form method="POST" action="/listings">
-        <h1>Enter new Listings</h1>
-        <input name="listing[title]" type="text" placeholder="Enter title" required />
-        <textarea name="listing[description]" placeholder="Enter Description here..." rows="5" required></textarea>
-        <input name="listing[image]" type="text" placeholder="Insert image URL Link" />
-        <input name="listing[price]" type="number" placeholder="Enter Price" required />
-        <input name="listing[country]" type="text" placeholder="Enter Country" required />
-        <input name="listing[location]" type="text" placeholder="Enter Location" required />
+    <form>
+        <h1>Edit Listings</h1>
+        <input name="listing[title]" value="<%= listing.title %>" type="text"/>
+        <textarea name="listing[description]" value="<%= listing.description %>" rows="5"></textarea>
+        <input name="listing[image]" type="text" value="<%= listing.image %>" />
+        <input name="listing[price]" type="number" value="<%= listing.price %>" />
+        <input name="listing[country]" type="text" value="<%= listing.country %>" />
+        <input name="listing[location]" type="text" value="<%= listing.location %>"/>
         <button type="submit">ADD</button>
     </form>
 </body>
-
 </html>
